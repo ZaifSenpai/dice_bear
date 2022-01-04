@@ -1,8 +1,8 @@
-## dice_bear
-
-[![GitHub stars](https://img.shields.io/github/stars/ZaifSenpai/dice_bear)](https://github.com/ZaifSenpai/dice_bear/stargazers) [![pub package](https://img.shields.io/pub/v/dice_bear)](https://pub.dev/packages/dice_bear_null_safe)
+<h1 align="center"><img src="https://avatars.dicebear.com/api/big-smile/flutter.svg?&background=%233ECAF5&radius=6&scale=90" width="124" /> <br />dice_bear<br />Flutter Package</h1>
 
 DiceBear API wrapper. DiceBear is an avatar library for designers and developers. Generate random
 avatar profile pictures!
 
-Checkout [DiceBear Repo](https://github.com/dicebear/dicebear)
+[![GitHub stars](https://img.shields.io/github/stars/ZaifSenpai/dice_bear)](https://github.com/ZaifSenpai/dice_bear) [![pub package](https://img.shields.io/pub/v/dice_bear)](https://pub.dev/packages/dice_bear)
+
+Checkout [DiceBear](https://github.com/dicebear/dicebear)
