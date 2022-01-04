@@ -11,73 +11,92 @@ import 'package:http/http.dart';
 part 'utils.dart';
 
 ///
-/// Generates a unique [DiceBearAvatar] object.
-///
-/// Try [DiceBear Avatars](https://avatars.dicebear.com/)
-/// to test with different sprites and options.
-///
-/// <hr/>
-/// <h3>LICENSE INFO<h3/>
-/// Please check the
-/// [design licenses](https://avatars.dicebear.com/licenses) before use
-DiceBearAvatar generateDiceBearAvatar({
-  required DiceBearSprites sprite,
-  String? seed,
-  DiceBearMoods? mood,
-  Color? background,
-  int radius = 0,
-  int? size,
-  int scale = 100,
-  bool flip = false,
-  int rotate = 0,
-  int translateX = 0,
-  int translateY = 0,
-}) {
-  assert(radius >= 0 && radius <= 50);
-  assert(size == null || size >= 1);
-  assert(scale >= 0 && scale <= 200);
-  assert(rotate >= 0 && rotate <= 360);
-  assert(translateX >= -100 && translateX <= 100);
-  assert(translateY >= -100 && translateY <= 100);
+/// Builder for [Avatar]
+class DiceBearBuilder {
+  final DiceBearSprites sprite;
+  final String? seed;
+  final DiceBearMoods? mood;
+  final Color? background;
+  final int radius;
+  final int? size;
+  final int scale;
+  final bool flip;
+  final int rotate;
+  final int translateX;
+  final int translateY;
 
-  Map<String, String> params = {};
-
-  if (mood != null) {
-    params['mood'] = mood.value;
+  DiceBearBuilder({
+    required this.sprite,
+    this.seed,
+    this.mood,
+    this.background,
+    this.radius = 0,
+    this.size,
+    this.scale = 100,
+    this.flip = false,
+    this.rotate = 0,
+    this.translateX = 0,
+    this.translateY = 0,
+  }) {
+    assert(radius >= 0 && radius <= 50);
+    assert(size == null || size! >= 1);
+    assert(scale >= 0 && scale <= 200);
+    assert(rotate >= 0 && rotate <= 360);
+    assert(translateX >= -100 && translateX <= 100);
+    assert(translateY >= -100 && translateY <= 100);
   }
-  if (background != null) {
-    params['background'] = background.toHexTriplet().replaceFirst("#", "%23");
-  }
-  params['radius'] = radius.toString();
-  if (size != null) {
-    params['size'] = size.toString();
-  }
-  params['scale'] = scale.toString();
-  params['flip'] = flip.toString();
-  params['rotate'] = rotate.toString();
-  params['translateX'] = translateX.toString();
-  params['translateY'] = translateY.toString();
 
-  Uri svgUri = Uri.https(
-    _diceBearHost,
-    "/api/${sprite.value}/${seed ?? _randomString()}.svg",
-    params,
-  );
+  ///
+  /// Generates a [Avatar] object.
+  ///
+  /// Try [DiceBear Avatars](https://avatars.dicebear.com/)
+  /// to test with different sprites and options.
+  ///
+  /// <hr/>
+  /// <h3>LICENSE INFO<h3/>
+  /// Please check the
+  /// [design licenses](https://avatars.dicebear.com/licenses) before use
+  Avatar build() {
+    Map<String, String> params = {};
 
-  return DiceBearAvatar._(svgUri);
+    if (mood != null) {
+      params['mood'] = mood!.value;
+    }
+    if (background != null) {
+      params['background'] =
+          background!.toHexTriplet().replaceFirst("#", "%23");
+    }
+    params['radius'] = radius.toString();
+    if (size != null) {
+      params['size'] = size.toString();
+    }
+    params['scale'] = scale.toString();
+    params['flip'] = flip.toString();
+    params['rotate'] = rotate.toString();
+    params['translateX'] = translateX.toString();
+    params['translateY'] = translateY.toString();
+
+    Uri svgUri = Uri.https(
+      _diceBearHost,
+      "/api/${sprite.value}/${seed ?? _randomString()}.svg",
+      params,
+    );
+
+    return Avatar._(svgUri);
+  }
 }
 
 ///
 /// A DiceBear avatar object that can be used to download the avatar in
 /// raw SVG bytes ([Uint8List]) or show a widget image of the avatar on
 /// screen
-class DiceBearAvatar {
+class Avatar {
   ///
   /// [svgUri] is the generated URL for DiceBear API that should return the
   /// right avatar
   final Uri svgUri;
 
-  DiceBearAvatar._(this.svgUri);
+  Avatar._(this.svgUri);
 
   ///
   /// Uses [http] to download the SVG image and returns raw SVG bytes
@@ -106,6 +125,11 @@ class DiceBearAvatar {
   /// Generates a widget using [SvgPicture.network].
   ///
   /// Also see [flutter_svg](https://pub.dev/packages/flutter_svg) package
+  ///
+  /// <h2>KNOWN ISSUE:</h2>
+  /// There is an issue with [SvgPicture.network] that does not correctly show
+  /// some images. I have reported this issue
+  /// [here](https://github.com/dnfield/flutter_svg/issues/641).
   ///
   /// <hr/>
   /// <h3>Copied documentation from [SvgPicture.network] :</h3>
@@ -142,6 +166,9 @@ class DiceBearAvatar {
   /// with the image request.
   ///
   /// If [excludeFromSemantics] is true, then [semanticLabel] will be ignored.
+  @Deprecated(
+    "There is an issue with [SvgPicture.network] that does not correctly show some images.",
+  )
   Widget toImage({
     Key? key,
     double? width,
@@ -181,7 +208,7 @@ class DiceBearAvatar {
 
   @override
   bool operator ==(Object other) {
-    if (other is DiceBearAvatar) {
+    if (other is Avatar) {
       return svgUri.toString() == other.svgUri.toString();
     } else {
       return this == other;
@@ -198,7 +225,7 @@ class DiceBearAvatar {
 /// See all styles [here](https://avatars.dicebear.com/styles)
 ///
 /// [DiceBearSprites.any] sets a random [DiceBearSprites] when
-/// calling [generateDiceBearAvatar]
+/// using [DiceBearBuilder]
 enum DiceBearSprites {
   any,
   adventurer,
@@ -224,7 +251,7 @@ enum DiceBearSprites {
 /// Returns moods for DiceBear
 ///
 /// [DiceBearMoods.any] sets a random [DiceBearMoods] when
-/// calling [generateDiceBearAvatar]
+/// using [DiceBearBuilder]
 enum DiceBearMoods {
   any,
   happy,
