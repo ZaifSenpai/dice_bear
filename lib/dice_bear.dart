@@ -11,9 +11,13 @@ import 'package:http/http.dart';
 part 'utils.dart';
 
 ///
+/// Generates a unique [DiceBearAvatar] object.
+///
 /// Try [DiceBear Avatars](https://avatars.dicebear.com/)
 /// to test with different sprites and options.
 ///
+/// <hr/>
+/// <h3>LICENSE INFO<h3/>
 /// Please check the
 /// [design licenses](https://avatars.dicebear.com/licenses) before use
 DiceBearAvatar generateDiceBearAvatar({
@@ -60,14 +64,25 @@ DiceBearAvatar generateDiceBearAvatar({
     params,
   );
 
-  return DiceBearAvatar(svgUri);
+  return DiceBearAvatar._(svgUri);
 }
 
+///
+/// A DiceBear avatar object that can be used to download the avatar in
+/// raw SVG bytes ([Uint8List]) or show a widget image of the avatar on
+/// screen
 class DiceBearAvatar {
+  ///
+  /// [svgUri] is the generated URL for DiceBear API that should return the
+  /// right avatar
   final Uri svgUri;
 
-  DiceBearAvatar(this.svgUri);
+  DiceBearAvatar._(this.svgUri);
 
+  ///
+  /// Uses [http] to download the SVG image and returns raw SVG bytes
+  ///
+  /// Returns [null] when it fails to download the image
   Future<Uint8List?> asRawSvgBytes() async {
     try {
       Response response = await http.get(svgUri);
@@ -87,6 +102,46 @@ class DiceBearAvatar {
     }
   }
 
+  ///
+  /// Generates a widget using [SvgPicture.network].
+  ///
+  /// Also see [flutter_svg](https://pub.dev/packages/flutter_svg) package
+  ///
+  /// <hr/>
+  /// <h3>Copied documentation from [SvgPicture.network] :</h3>
+  ///
+  /// Creates a widget that displays a [PictureStream] obtained from the network.
+  ///
+  /// The [url] argument must not be null.
+  ///
+  /// Either the [width] and [height] arguments should be specified, or the
+  /// widget should be placed in a context that sets tight layout constraints.
+  /// Otherwise, the image dimensions will change as the image is loaded, which
+  /// will result in ugly layout changes.
+  ///
+  /// If `matchTextDirection` is set to true, the picture will be flipped
+  /// horizontally in [TextDirection.rtl] contexts.
+  ///
+  /// The `allowDrawingOutsideOfViewBox` parameter should be used with caution -
+  /// if set to true, it will not clip the canvas used internally to the view box,
+  /// meaning the picture may draw beyond the intended area and lead to undefined
+  /// behavior or additional memory overhead.
+  ///
+  /// A custom `placeholderBuilder` can be specified for cases where decoding or
+  /// acquiring data may take a noticeably long time, such as high latency scenarios.
+  ///
+  /// The `color` and `colorBlendMode` arguments, if specified, will be used to set a
+  /// [ColorFilter] on any [Paint]s created for this drawing.
+  ///
+  /// The `theme` argument, if provided, will override the default theme
+  /// used when parsing SVG elements.
+  ///
+  /// All network images are cached regardless of HTTP headers.
+  ///
+  /// An optional `headers` argument can be used to send custom HTTP headers
+  /// with the image request.
+  ///
+  /// If [excludeFromSemantics] is true, then [semanticLabel] will be ignored.
   Widget toImage({
     Key? key,
     double? width,
@@ -123,10 +178,27 @@ class DiceBearAvatar {
       theme: theme,
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (other is DiceBearAvatar) {
+      return svgUri.toString() == other.svgUri.toString();
+    } else {
+      return this == other;
+    }
+  }
+
+  @override
+  int get hashCode {
+    return svgUri.toString().hashCode;
+  }
 }
 
 ///
 /// See all styles [here](https://avatars.dicebear.com/styles)
+///
+/// [DiceBearSprites.any] sets a random [DiceBearSprites] when
+/// calling [generateDiceBearAvatar]
 enum DiceBearSprites {
   any,
   adventurer,
@@ -148,6 +220,11 @@ enum DiceBearSprites {
   pixelArtNeutral,
 }
 
+///
+/// Returns moods for DiceBear
+///
+/// [DiceBearMoods.any] sets a random [DiceBearMoods] when
+/// calling [generateDiceBearAvatar]
 enum DiceBearMoods {
   any,
   happy,
