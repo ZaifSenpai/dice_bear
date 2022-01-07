@@ -1,3 +1,8 @@
+## 0.0.3
+
+* Using DiceBear API v5.x to fix an issue with
+  some [SVG renderings](https://github.com/ZaifSenpai/dice_bear/issues/1)
+
 ## 0.0.2-beta
 
 * Updated structure of package to use Builder

@@ -57,7 +57,9 @@ class DiceBearBuilder {
   /// Please check the
   /// [design licenses](https://avatars.dicebear.com/licenses) before use
   Avatar build() {
-    Map<String, String> params = {};
+    Map<String, String> params = {
+      'seed': seed ?? _randomString(),
+    };
 
     if (mood != null) {
       params['mood'] = mood!.value;
@@ -78,7 +80,7 @@ class DiceBearBuilder {
 
     Uri svgUri = Uri.https(
       _diceBearHost,
-      "/api/${sprite.value}/${seed ?? _randomString()}.svg",
+      "/$_diceBearApiVersion/${sprite.value}/svg",
       params,
     );
 
@@ -126,11 +128,6 @@ class Avatar {
   ///
   /// Also see [flutter_svg](https://pub.dev/packages/flutter_svg) package
   ///
-  /// <h2>KNOWN ISSUE:</h2>
-  /// There is an issue with [SvgPicture.network] that does not correctly show
-  /// some images. I have reported this issue
-  /// [here](https://github.com/dnfield/flutter_svg/issues/641).
-  ///
   /// <hr/>
   /// <h3>Copied documentation from [SvgPicture.network] :</h3>
   ///
@@ -166,9 +163,6 @@ class Avatar {
   /// with the image request.
   ///
   /// If [excludeFromSemantics] is true, then [semanticLabel] will be ignored.
-  @Deprecated(
-    "There is an issue with [SvgPicture.network] that does not correctly show some images.",
-  )
   Widget toImage({
     Key? key,
     double? width,

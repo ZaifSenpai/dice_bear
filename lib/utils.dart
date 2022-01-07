@@ -1,6 +1,8 @@
 part of 'dice_bear.dart';
 
-const String _diceBearHost = "avatars.dicebear.com";
+const String _diceBearHost = "api.dicebear.com";
+const String _diceBearApiVersion = "5.x";
+
 final Random _random = Random();
 
 extension _DiceBearSpritesExt on DiceBearSprites {
