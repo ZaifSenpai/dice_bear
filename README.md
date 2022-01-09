@@ -16,7 +16,8 @@ Checkout all available styles [here](https://avatars.dicebear.com/styles)
 * [Get Uri of generate image](#get-uri-of-generate-image)
 * [Get a Widget using Avatar](#get-a-widget-using-avatar)
 * [Get raw SVG bytes data](#get-raw-svg-bytes-data)
-* [DiceBearBuilder Parameters](#dicebearbuilder-parameters)
+* [DiceBearBuilder() Parameters](#dicebearbuilder-parameters)
+* [avatar.toImage() Parameters](#avatartoimage-parameters)
 
 ### Import
 
@@ -36,7 +37,7 @@ Or generate random ```Avatar``` everytime:
 Avatar _avatar = DiceBearBuilder.withRandomSeed().build();
 ```
 
-See below for available [DiceBearBuilder() Parameters](#diceBearBuilder-parameters)
+See below for available [DiceBearBuilder() Parameters](#dicebearbuilder-parameters)
 
 ### Get Uri of generate image
 
