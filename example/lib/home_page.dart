@@ -11,9 +11,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Avatar? _avatar;
 
-  DiceBearSprites sprite = DiceBearSprites.any;
+  DiceBearSprite sprite = DiceBearSprite.any;
   String? seed;
-  DiceBearMoods mood = DiceBearMoods.any;
   Color? background;
   int radius = 0;
   int? size;
@@ -22,6 +21,8 @@ class _HomePageState extends State<HomePage> {
   int rotate = 0;
   int translateX = 0;
   int translateY = 0;
+
+  Widget avatar = DiceBearBuilder.withRandomSeed().build().toImage();
 
   @override
   void initState() {
@@ -32,9 +33,7 @@ class _HomePageState extends State<HomePage> {
 
   void _buildAvatar() {
     setState(() {
-      _avatar = DiceBearBuilder(
-        sprite: sprite,
-      ).build();
+      _avatar = DiceBearBuilder.withRandomSeed().build();
     });
   }
 

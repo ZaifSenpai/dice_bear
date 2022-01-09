@@ -13,10 +13,9 @@ part 'utils.dart';
 ///
 /// Builder for [Avatar]
 class DiceBearBuilder {
-  final DiceBearSprites sprite;
-  final String? seed;
-  final DiceBearMoods? mood;
-  final Color? background;
+  final DiceBearSprite sprite;
+  late final String seed;
+  final Color? backgroundColor;
   final int radius;
   final int? size;
   final int scale;
@@ -25,18 +24,26 @@ class DiceBearBuilder {
   final int translateX;
   final int translateY;
 
+  static const DiceBearSprite _defaultSprite = DiceBearSprite.any;
+  static const String _defaultSeed = '';
+  static const int _defaultRadius = 0;
+  static const int _defaultScale = 100;
+  static const bool _defaultFlip = false;
+  static const int _defaultRotate = 0;
+  static const int _defaultTranslateX = 0;
+  static const int _defaultTranslateY = 0;
+
   DiceBearBuilder({
-    required this.sprite,
-    this.seed,
-    this.mood,
-    this.background,
-    this.radius = 0,
+    this.sprite = _defaultSprite,
+    this.seed = _defaultSeed,
+    this.backgroundColor,
+    this.radius = _defaultRadius,
     this.size,
-    this.scale = 100,
-    this.flip = false,
-    this.rotate = 0,
-    this.translateX = 0,
-    this.translateY = 0,
+    this.scale = _defaultScale,
+    this.flip = _defaultFlip,
+    this.rotate = _defaultRotate,
+    this.translateX = _defaultTranslateX,
+    this.translateY = _defaultTranslateY,
   }) {
     assert(radius >= 0 && radius <= 50);
     assert(size == null || size! >= 1);
@@ -44,6 +51,27 @@ class DiceBearBuilder {
     assert(rotate >= 0 && rotate <= 360);
     assert(translateX >= -100 && translateX <= 100);
     assert(translateY >= -100 && translateY <= 100);
+  }
+
+  DiceBearBuilder.withRandomSeed({
+    this.sprite = _defaultSprite,
+    this.backgroundColor,
+    this.radius = _defaultRadius,
+    this.size,
+    this.scale = _defaultScale,
+    this.flip = _defaultFlip,
+    this.rotate = _defaultRotate,
+    this.translateX = _defaultTranslateX,
+    this.translateY = _defaultTranslateY,
+  }) {
+    assert(radius >= 0 && radius <= 50);
+    assert(size == null || size! >= 1);
+    assert(scale >= 0 && scale <= 200);
+    assert(rotate >= 0 && rotate <= 360);
+    assert(translateX >= -100 && translateX <= 100);
+    assert(translateY >= -100 && translateY <= 100);
+
+    seed = _randomString();
   }
 
   ///
@@ -58,25 +86,34 @@ class DiceBearBuilder {
   /// [design licenses](https://avatars.dicebear.com/licenses) before use
   Avatar build() {
     Map<String, String> params = {
-      'seed': seed ?? _randomString(),
+      'seed': seed,
     };
 
-    if (mood != null) {
-      params['mood'] = mood!.value;
+    if (backgroundColor != null) {
+      params['backgroundColor'] =
+          backgroundColor!.toHexTriplet().replaceFirst("#", "%23");
     }
-    if (background != null) {
-      params['background'] =
-          background!.toHexTriplet().replaceFirst("#", "%23");
+    if (radius != _defaultRadius) {
+      params['radius'] = radius.toString();
     }
-    params['radius'] = radius.toString();
     if (size != null) {
       params['size'] = size.toString();
     }
-    params['scale'] = scale.toString();
-    params['flip'] = flip.toString();
-    params['rotate'] = rotate.toString();
-    params['translateX'] = translateX.toString();
-    params['translateY'] = translateY.toString();
+    if (scale != _defaultScale) {
+      params['scale'] = scale.toString();
+    }
+    if (flip != _defaultFlip) {
+      params['flip'] = flip.toString();
+    }
+    if (rotate != _defaultRotate) {
+      params['rotate'] = rotate.toString();
+    }
+    if (translateX != _defaultTranslateX) {
+      params['translateX'] = translateX.toString();
+    }
+    if (translateY != _defaultTranslateY) {
+      params['translateY'] = translateY.toString();
+    }
 
     Uri svgUri = Uri.https(
       _diceBearHost,
@@ -218,9 +255,9 @@ class Avatar {
 ///
 /// See all styles [here](https://avatars.dicebear.com/styles)
 ///
-/// [DiceBearSprites.any] sets a random [DiceBearSprites] when
+/// [DiceBearSprite.any] sets a random [DiceBearSprite] when
 /// using [DiceBearBuilder]
-enum DiceBearSprites {
+enum DiceBearSprite {
   any,
   adventurer,
   adventurerNeutral,
@@ -232,6 +269,9 @@ enum DiceBearSprites {
   croodles,
   croodlesNeutral,
   identicon,
+  @Deprecated(
+    "avatar.toImage() will crash because of an issue with flutter_svg. See dnfield/flutter_svg issue #559 on GitHub",
+  ) // Remove the deprecation check from _randomDiceBearSprite() too
   initials,
   micah,
   miniavs,
@@ -239,16 +279,4 @@ enum DiceBearSprites {
   personas,
   pixelArt,
   pixelArtNeutral,
-}
-
-///
-/// Returns moods for DiceBear
-///
-/// [DiceBearMoods.any] sets a random [DiceBearMoods] when
-/// using [DiceBearBuilder]
-enum DiceBearMoods {
-  any,
-  happy,
-  sad,
-  surprised,
 }

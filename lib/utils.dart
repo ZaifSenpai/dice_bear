@@ -5,65 +5,46 @@ const String _diceBearApiVersion = "5.x";
 
 final Random _random = Random();
 
-extension _DiceBearSpritesExt on DiceBearSprites {
+extension _DiceBearSpriteExt on DiceBearSprite {
   String get value {
     switch (this) {
-      case DiceBearSprites.adventurer:
+      case DiceBearSprite.adventurer:
         return "adventurer";
-      case DiceBearSprites.adventurerNeutral:
+      case DiceBearSprite.adventurerNeutral:
         return "adventurer-neutral";
-      case DiceBearSprites.avataaars:
+      case DiceBearSprite.avataaars:
         return "avataaars";
-      case DiceBearSprites.bigEars:
+      case DiceBearSprite.bigEars:
         return "big-ears";
-      case DiceBearSprites.bigEarsNeutral:
+      case DiceBearSprite.bigEarsNeutral:
         return "big-ears-neutral";
-      case DiceBearSprites.bigSmile:
+      case DiceBearSprite.bigSmile:
         return "big-smile";
-      case DiceBearSprites.bottts:
+      case DiceBearSprite.bottts:
         return "bottts";
-      case DiceBearSprites.croodles:
+      case DiceBearSprite.croodles:
         return "croodles";
-      case DiceBearSprites.croodlesNeutral:
+      case DiceBearSprite.croodlesNeutral:
         return "croodles-neutral";
-      case DiceBearSprites.identicon:
+      case DiceBearSprite.identicon:
         return "identicon";
-      case DiceBearSprites.initials:
+      case DiceBearSprite.initials:
         return "initials";
-      case DiceBearSprites.micah:
+      case DiceBearSprite.micah:
         return "micah";
-      case DiceBearSprites.miniavs:
+      case DiceBearSprite.miniavs:
         return "miniavs";
-      case DiceBearSprites.openPeeps:
+      case DiceBearSprite.openPeeps:
         return "open-peeps";
-      case DiceBearSprites.personas:
+      case DiceBearSprite.personas:
         return "personas";
-      case DiceBearSprites.pixelArt:
+      case DiceBearSprite.pixelArt:
         return "pixel-art";
-      case DiceBearSprites.pixelArtNeutral:
+      case DiceBearSprite.pixelArtNeutral:
         return "pixel-art-neutral";
-      case DiceBearSprites.any:
+      case DiceBearSprite.any:
       default:
-        return DiceBearSprites
-            .values[_random.nextInt(DiceBearSprites.values.length - 1) + 1]
-            .value;
-    }
-  }
-}
-
-extension _DiceBearMoodsExt on DiceBearMoods {
-  String get value {
-    switch (this) {
-      case DiceBearMoods.happy:
-        return 'happy';
-      case DiceBearMoods.sad:
-        return 'sad';
-      case DiceBearMoods.surprised:
-        return 'surprised';
-      case DiceBearMoods.any:
-      default:
-        return DiceBearMoods
-            .values[_random.nextInt(DiceBearMoods.values.length - 1) + 1].value;
+        return _randomDiceBearSprite().value;
     }
   }
 }
@@ -71,6 +52,19 @@ extension _DiceBearMoodsExt on DiceBearMoods {
 extension _ColorX on Color {
   String toHexTriplet() =>
       '#${(value & 0xFFFFFF).toRadixString(16).padLeft(6, '0').toUpperCase()}';
+}
+
+DiceBearSprite _randomDiceBearSprite() {
+  DiceBearSprite sprite = DiceBearSprite
+      .values[_random.nextInt(DiceBearSprite.values.length - 1) + 1];
+
+  switch (sprite) {
+    case DiceBearSprite.initials:
+      // ... Add more deprecations
+      return _randomDiceBearSprite();
+    default:
+      return sprite;
+  }
 }
 
 String _randomString() {

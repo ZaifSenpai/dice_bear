@@ -1,3 +1,9 @@
+## 0.0.4
+
+* Updated README.md
+* Added DiceBearBuilder.withRandomSeed()
+* Updated example project
+
 ## 0.0.3
 
 * Using DiceBear API v5.x to fix an issue with
