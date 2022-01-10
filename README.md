@@ -69,13 +69,13 @@ These options effect the SVG. They does not effect the widget created by ```avat
 | ```DiceBearSprite? sprite``` | Design of avatar to show | ```DiceBearSprite.any``` | | [See all styles](https://avatars.dicebear.com/styles) |
 | ```String? seed``` | Seed for the avatar | ```''``` | | You can use UID of user to generate a personal avatar of that user. |
 | ```Color? backgroundColor``` | Background color | No Color (Transparent) | | Opacity/Alpha does not effect the background color. |
-| ```int radius``` | Radius | ```0``` | min: 0<br/>max: 20 | |
+| ```int radius``` | Radius | ```0``` | min: 0<br />max: 20 | |
 | ```int size``` | Size of SVG | | min: 1 | This does not define the size of widget. |
-| ```int scale``` | Scale avatar inside SVG container | ```100``` | min: 0<br/>max: 200 | |
+| ```int scale``` | Scale avatar inside SVG container | ```100``` | min: 0<br />max: 200 | |
 | ```bool flip``` | Flip avatar horizontally | ```false``` | | |
-| ```int rotate``` | Number if degrees to rotate image clockwise | ```0``` | min: 0<br/>max: 360 | |
-| ```int translateX``` | Translate avatar SVG along X-axis | ```0``` | min: -100<br/>max: 100 | |
-| ```int translateY``` | Translate avatar SVG along Y-axis | ```0``` | min: -100<br/>max: 100 | |
+| ```int rotate``` | Number if degrees to rotate image clockwise | ```0``` | min: 0<br />max: 360 | |
+| ```int translateX``` | Translate avatar SVG along X-axis | ```0``` | min: -100<br />max: 100 | |
+| ```int translateY``` | Translate avatar SVG along Y-axis | ```0``` | min: -100<br />max: 100 | |
 
 ### DiceBearSprite enum
 
@@ -92,7 +92,7 @@ These options effect the SVG. They does not effect the widget created by ```avat
 | ```DiceBearSprite.croodles``` | <img src="https://api.dicebear.com/5.x/croodles/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
 | ```DiceBearSprite.croodlesNeutral``` | <img src="https://api.dicebear.com/5.x/croodles-neutral/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
 | ```DiceBearSprite.identicon``` | <img src="https://api.dicebear.com/5.x/identicon/svg?seed=aa&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.initials``` | <img src="https://api.dicebear.com/5.x/initials/svg?seed=ab&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | Deprecated because ```avatar.toImage()```<br/>throws an exception on this sprite |
+| ```DiceBearSprite.initials``` | <img src="https://api.dicebear.com/5.x/initials/svg?seed=ab&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | Deprecated because ```avatar.toImage()```<br />throws an exception on this sprite |
 | ```DiceBearSprite.micah``` | <img src="https://api.dicebear.com/5.x/micah/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
 | ```DiceBearSprite.miniavs``` | <img src="https://api.dicebear.com/5.x/miniavs/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
 | ```DiceBearSprite.openPeeps``` | <img src="https://api.dicebear.com/5.x/open-peeps/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
