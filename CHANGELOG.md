@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Updated README.md and added DiceBearSprite enum examples
+
 ## 0.1.0
 
 * Updated README.md
