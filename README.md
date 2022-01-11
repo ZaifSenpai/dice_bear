@@ -68,7 +68,7 @@ These options effect the SVG. They does not effect the widget created by ```avat
 | --------- | ------- | ------------- | ----- | ------- |
 | ```DiceBearSprite? sprite``` | Design of avatar to show | ```DiceBearSprite.any``` | | [See all styles](https://avatars.dicebear.com/styles) |
 | ```String? seed``` | Seed for the avatar | ```''``` | | You can use UID of user to generate a personal avatar of that user. |
-| ```Color? backgroundColor``` | Background color | No Color (Transparent) | | Opacity/Alpha does not effect the background color. |
+| ```Color? backgroundColor``` | Background color | No Color (May or may not be transparent, depending on selected sprite) | | Opacity/Alpha does not effect the background color. |
 | ```int radius``` | Radius | ```0``` | min: 0<br />max: 20 | |
 | ```int size``` | Size of SVG | | min: 1 | This does not define the size of widget. |
 | ```int scale``` | Scale avatar inside SVG container | ```100``` | min: 0<br />max: 200 | |
@@ -82,24 +82,23 @@ These options effect the SVG. They does not effect the widget created by ```avat
 | Sprite | Example | Comment |
 | ------ | ------- | ------- |
 | ```DiceBearSprite.any``` | | Sets a random sprite |
-| ```DiceBearSprite.adventurer``` | <img src="https://api.dicebear.com/5.x/adventurer/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.adventurerNeutral``` | <img src="https://api.dicebear.com/5.x/adventurer-neutral/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.avataaars``` | <img src="https://api.dicebear.com/5.x/avataaars/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.bigEars``` | <img src="https://api.dicebear.com/5.x/big-ears/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.bigEarsNeutral``` | <img src="https://api.dicebear.com/5.x/big-ears-neutral/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.bigSmile``` | <img src="https://api.dicebear.com/5.x/big-smile/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.bottts``` | <img src="https://api.dicebear.com/5.x/bottts/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.croodles``` | <img src="https://api.dicebear.com/5.x/croodles/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.croodlesNeutral``` | <img src="https://api.dicebear.com/5.x/croodles-neutral/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.identicon``` | <img src="https://api.dicebear.com/5.x/identicon/svg?seed=aa&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.initials``` | <img src="https://api.dicebear.com/5.x/initials/svg?seed=ab&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | Deprecated because ```avatar.toImage()```<br />throws an exception on this sprite |
-| ```DiceBearSprite.micah``` | <img src="https://api.dicebear.com/5.x/micah/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.miniavs``` | <img src="https://api.dicebear.com/5.x/miniavs/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.openPeeps``` | <img src="https://api.dicebear.com/5.x/open-peeps/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.personas``` | <img src="https://api.dicebear.com/5.x/personas/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.pixelArt``` | <img src="https://api.dicebear.com/5.x/pixel-art/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-| ```DiceBearSprite.pixelArtNeutral``` | <img src="https://api.dicebear.com/5.x/pixel-art-neutral/svg?seed=a&backgroundColor=%233ECAF5&radius=6&scale=90" width="124"/> | |
-
+| ```DiceBearSprite.adventurer``` | <a href="https://api.dicebear.com/5.x/adventurer/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/adventurer/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.adventurerNeutral``` | <a href="https://api.dicebear.com/5.x/adventurer-neutral/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/adventurer-neutral/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.avataaars``` | <a href="https://api.dicebear.com/5.x/avataaars/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/avataaars/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.bigEars``` | <a href="https://api.dicebear.com/5.x/big-ears/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/big-ears/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.bigEarsNeutral``` | <a href="https://api.dicebear.com/5.x/big-ears-neutral/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/big-ears-neutral/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.bigSmile``` | <a href="https://api.dicebear.com/5.x/big-smile/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/big-smile/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.bottts``` | <a href="https://api.dicebear.com/5.x/bottts/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/bottts/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.croodles``` | <a href="https://api.dicebear.com/5.x/croodles/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/croodles/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.croodlesNeutral``` | <a href="https://api.dicebear.com/5.x/croodles-neutral/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/croodles-neutral/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.identicon``` | <a href="https://api.dicebear.com/5.x/identicon/svg?seed=aa&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/identicon/svg?seed=aa&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.initials``` | <a href="https://api.dicebear.com/5.x/initials/svg?seed=ab&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/initials/svg?seed=ab&scale=90" width="124"/></a> | Deprecated because ```avatar.toImage()```<br />throws an exception on this sprite |
+| ```DiceBearSprite.micah``` | <a href="https://api.dicebear.com/5.x/micah/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/micah/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.miniavs``` | <a href="https://api.dicebear.com/5.x/miniavs/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/miniavs/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.openPeeps``` | <a href="https://api.dicebear.com/5.x/open-peeps/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/open-peeps/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.personas``` | <a href="https://api.dicebear.com/5.x/personas/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/personas/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.pixelArt``` | <a href="https://api.dicebear.com/5.x/pixel-art/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/pixel-art/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.pixelArtNeutral``` | <a href="https://api.dicebear.com/5.x/pixel-art-neutral/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/pixel-art-neutral/svg?seed=a&scale=90" width="124"/></a> | |
 ### avatar.toImage() Parameters
 | Parameter | Default Value |
 | --------- | ------------- |
