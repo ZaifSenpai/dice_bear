@@ -91,7 +91,7 @@ class DiceBearBuilder {
 
     if (backgroundColor != null) {
       params['backgroundColor'] =
-          backgroundColor!.toHexTriplet().replaceFirst("#", "%23");
+          backgroundColor!.toHexTriplet().replaceFirst("#", "");
     }
     if (radius != _defaultRadius) {
       params['radius'] = radius.toString();

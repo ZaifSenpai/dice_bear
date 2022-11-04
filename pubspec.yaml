@@ -1,6 +1,6 @@
 name: dice_bear
 description: DiceBear API wrapper. DiceBear is an avatar library for designers and developers. Generate random avatar profile pictures!
-version: 0.1.3
+version: 0.1.4
 homepage: https://github.com/ZaifSenpai/dice_bear
 
 environment:

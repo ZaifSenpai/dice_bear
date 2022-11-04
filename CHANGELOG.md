@@ -1,3 +1,7 @@
+## 0.1.4
+
+* Fixed backgroundColor not working
+
 ## 0.1.3
 
 * Updated README.md

@@ -1,4 +1,4 @@
-<h1 align="center"><img src="https://api.dicebear.com/5.x/big-smile/svg?seed=flutter&backgroundColor=%233ECAF5&radius=6&scale=90" width="124" /> <br />dice_bear<br />Flutter Package</h1>
+<h1 align="center"><img src="https://api.dicebear.com/5.x/big-smile/svg?seed=flutter&backgroundColor=3ECAF5&radius=6&scale=90" width="124" /> <br />dice_bear<br />Flutter Package</h1>
 
 DiceBear API wrapper. DiceBear is an avatar library for designers and developers. Generate random
 avatar profile pictures!
