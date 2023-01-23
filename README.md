@@ -62,7 +62,7 @@ Uint8List? raw = await _avatar.asRawSvgBytes();
 ```
 
 ### DiceBearBuilder() Parameters
-These options effect the SVG. They does not effect the widget created by ```avatar.toImage()```. See [avatar.toImage() Parameters](#avatartoimage-parameters) below.
+These options affect the SVG. They do not affect the widget created by ```avatar.toImage()```. See [avatar.toImage() Parameters](#avatartoimage-parameters) below.
 
 | Parameter | Details | Default Value | Range | Comment |
 | --------- | ------- | ------------- | ----- | ------- |
