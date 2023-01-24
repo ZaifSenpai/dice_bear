@@ -14,6 +14,8 @@ extension _DiceBearSpriteExt on DiceBearSprite {
         return "adventurer-neutral";
       case DiceBearSprite.avataaars:
         return "avataaars";
+      case DiceBearSprite.avataaarsNeutral:
+        return "avataaars-neutral";
       case DiceBearSprite.bigEars:
         return "big-ears";
       case DiceBearSprite.bigEarsNeutral:
@@ -22,14 +24,24 @@ extension _DiceBearSpriteExt on DiceBearSprite {
         return "big-smile";
       case DiceBearSprite.bottts:
         return "bottts";
+      case DiceBearSprite.botttsNeutral:
+        return "bottts-neutral";
       case DiceBearSprite.croodles:
         return "croodles";
       case DiceBearSprite.croodlesNeutral:
         return "croodles-neutral";
+      case DiceBearSprite.funEmoji:
+        return "fun-emoji";
+      case DiceBearSprite.icons:
+        return "icons";
       case DiceBearSprite.identicon:
         return "identicon";
       case DiceBearSprite.initials:
         return "initials";
+      case DiceBearSprite.lorelei:
+        return "lorelei";
+      case DiceBearSprite.loreleiNeutral:
+        return "lorelei-neutral";
       case DiceBearSprite.micah:
         return "micah";
       case DiceBearSprite.miniavs:

@@ -1,6 +1,8 @@
 import 'package:dice_bear/dice_bear.dart';
 import 'package:flutter/material.dart';
 
+import 'widgets/inputfield_widget.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -24,6 +26,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget avatar = DiceBearBuilder.withRandomSeed().build().toImage();
 
+  TextEditingController controller = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -33,7 +37,9 @@ class _HomePageState extends State<HomePage> {
 
   void _buildAvatar() {
     setState(() {
-      _avatar = DiceBearBuilder.withRandomSeed().build();
+      _avatar = controller.text.isEmpty
+          ? DiceBearBuilder.withRandomSeed().build()
+          : DiceBearBuilder(seed: controller.text).build();
     });
   }
 
@@ -44,23 +50,23 @@ class _HomePageState extends State<HomePage> {
     );
 
     return Scaffold(
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const Divider(height: 50),
-              _AvatarView(_avatar),
-              divider,
-              SelectableText(
-                _avatar?.svgUri.toString() ?? "",
-                minLines: 1,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 12),
-              ),
-            ],
-          ),
+      resizeToAvoidBottomInset: true,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30.0),
+        child: Column(
+          children: [
+            const Divider(height: 50),
+            _AvatarView(_avatar),
+            divider,
+            SelectableText(
+              _avatar?.svgUri.toString() ?? "",
+              minLines: 1,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 12),
+            ),
+            Expanded(
+                child: Center(child: InputFieldWidget(controller: controller)))
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
