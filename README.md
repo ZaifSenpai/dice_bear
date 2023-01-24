@@ -62,7 +62,7 @@ Uint8List? raw = await _avatar.asRawSvgBytes();
 ```
 
 ### DiceBearBuilder() Parameters
-These options effect the SVG. They does not effect the widget created by ```avatar.toImage()```. See [avatar.toImage() Parameters](#avatartoimage-parameters) below.
+These options affect the SVG. They do not affect the widget created by ```avatar.toImage()```. See [avatar.toImage() Parameters](#avatartoimage-parameters) below.
 
 | Parameter | Details | Default Value | Range | Comment |
 | --------- | ------- | ------------- | ----- | ------- |
@@ -85,14 +85,20 @@ These options effect the SVG. They does not effect the widget created by ```avat
 | ```DiceBearSprite.adventurer``` | <a href="https://api.dicebear.com/5.x/adventurer/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/adventurer/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.adventurerNeutral``` | <a href="https://api.dicebear.com/5.x/adventurer-neutral/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/adventurer-neutral/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.avataaars``` | <a href="https://api.dicebear.com/5.x/avataaars/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/avataaars/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.avataaarsNeutral``` | <a href="https://api.dicebear.com/5.x/avataaars-neutral/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/avataaars-neutral/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.bigEars``` | <a href="https://api.dicebear.com/5.x/big-ears/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/big-ears/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.bigEarsNeutral``` | <a href="https://api.dicebear.com/5.x/big-ears-neutral/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/big-ears-neutral/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.bigSmile``` | <a href="https://api.dicebear.com/5.x/big-smile/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/big-smile/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.bottts``` | <a href="https://api.dicebear.com/5.x/bottts/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/bottts/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.botttsNeutral``` | <a href="https://api.dicebear.com/5.x/bottts-neutral/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/bottts-neutral/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.croodles``` | <a href="https://api.dicebear.com/5.x/croodles/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/croodles/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.croodlesNeutral``` | <a href="https://api.dicebear.com/5.x/croodles-neutral/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/croodles-neutral/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.funEmoji``` | <a href="https://api.dicebear.com/5.x/fun-emoji/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/fun-emoji/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.icons``` | <a href="https://api.dicebear.com/5.x/icons/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/icons/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.identicon``` | <a href="https://api.dicebear.com/5.x/identicon/svg?seed=aa&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/identicon/svg?seed=aa&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.initials``` | <a href="https://api.dicebear.com/5.x/initials/svg?seed=ab&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/initials/svg?seed=ab&scale=90" width="124"/></a> | Deprecated because ```avatar.toImage()```<br />throws an exception on this sprite |
+| ```DiceBearSprite.lorelei``` | <a href="https://api.dicebear.com/5.x/lorelei/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/lorelei/svg?seed=a&scale=90" width="124"/></a> | |
+| ```DiceBearSprite.loreleiNeutral``` | <a href="https://api.dicebear.com/5.x/lorelei-neutral/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/lorelei-neutral/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.micah``` | <a href="https://api.dicebear.com/5.x/micah/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/micah/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.miniavs``` | <a href="https://api.dicebear.com/5.x/miniavs/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/miniavs/svg?seed=a&scale=90" width="124"/></a> | |
 | ```DiceBearSprite.openPeeps``` | <a href="https://api.dicebear.com/5.x/open-peeps/svg?seed=a&scale=90" target="_blank"><img src="https://api.dicebear.com/5.x/open-peeps/svg?seed=a&scale=90" width="124"/></a> | |
