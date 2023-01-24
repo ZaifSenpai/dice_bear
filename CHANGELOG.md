@@ -1,3 +1,14 @@
+## 0.1.5
+* Added new sprites:
+  * `DiceBearSprite.avataaarsNeutral`
+  * `DiceBearSprite.botttsNeutral`
+  * `DiceBearSprite.funEmoji`
+  * `DiceBearSprite.icons`
+  * `DiceBearSprite.lorelei`
+  * `DiceBearSprite.loreleiNeutral`
+* Added input field in example app to set seed manually
+* Fixed grammatical issues in README.md
+
 ## 0.1.4
 
 * Fixed backgroundColor not working
