@@ -79,16 +79,12 @@ DiceBearSprite _randomDiceBearSprite() {
   }
 }
 
-String _randomString() {
-  const _chars =
+String _randomString({int length = 200}) {
+  const chars =
       'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-
+  final random = Random();
   return String.fromCharCodes(
     Iterable.generate(
-      _random.nextInt(200) + 2,
-      (_) => _chars.codeUnitAt(
-        _random.nextInt(_chars.length),
-      ),
-    ),
+        length, (_) => chars.codeUnitAt(random.nextInt(chars.length))),
   );
 }
