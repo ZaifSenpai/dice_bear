@@ -2,24 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'home_page.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: const TextTheme(
-          bodyText2: TextStyle(color: Colors.black),
+  Widget build(BuildContext context) => MaterialApp(
+        title: 'DiceBear Avatars Demo',
+        theme: ThemeData(
+          colorSchemeSeed: Colors.blue,
         ),
-      ),
-      home: const HomePage(),
-    );
-  }
+        home: const HomePage(),
+      );
 }
