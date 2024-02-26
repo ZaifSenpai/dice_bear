@@ -3,7 +3,7 @@ library dice_bear;
 import 'dart:math';
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -89,31 +89,17 @@ class DiceBearBuilder {
       'seed': seed,
     };
 
-    if (backgroundColor != null) {
-      params['backgroundColor'] =
-          backgroundColor!.toHexTriplet().replaceFirst("#", "");
-    }
-    if (radius != _defaultRadius) {
-      params['radius'] = radius.toString();
-    }
-    if (size != null) {
-      params['size'] = size.toString();
-    }
-    if (scale != _defaultScale) {
-      params['scale'] = scale.toString();
-    }
-    if (flip != _defaultFlip) {
-      params['flip'] = flip.toString();
-    }
-    if (rotate != _defaultRotate) {
-      params['rotate'] = rotate.toString();
-    }
-    if (translateX != _defaultTranslateX) {
-      params['translateX'] = translateX.toString();
-    }
-    if (translateY != _defaultTranslateY) {
-      params['translateY'] = translateY.toString();
-    }
+    params.addAll({
+      if (backgroundColor != null)
+        'backgroundColor': backgroundColor!.toHexTriplet().substring(1),
+      if (radius != _defaultRadius) 'radius': radius.toString(),
+      if (size != null) 'size': size.toString(),
+      if (scale != _defaultScale) 'scale': scale.toString(),
+      if (flip != _defaultFlip) 'flip': flip.toString(),
+      if (rotate != _defaultRotate) 'rotate': rotate.toString(),
+      if (translateX != _defaultTranslateX) 'translateX': translateX.toString(),
+      if (translateY != _defaultTranslateY) 'translateY': translateY.toString(),
+    });
 
     Uri svgUri = Uri.https(
       _diceBearHost,
@@ -227,29 +213,25 @@ class Avatar {
       matchTextDirection: matchTextDirection,
       allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
       placeholderBuilder: placeholderBuilder,
-      color: color,
-      colorBlendMode: colorBlendMode,
+      colorFilter: cacheColorFilter
+          ? ColorFilter.mode(
+              color ?? Colors.transparent,
+              colorBlendMode,
+            )
+          : null,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
       clipBehavior: clipBehavior,
-      cacheColorFilter: cacheColorFilter,
       theme: theme,
     );
   }
 
   @override
-  bool operator ==(Object other) {
-    if (other is Avatar) {
-      return svgUri.toString() == other.svgUri.toString();
-    } else {
-      return this == other;
-    }
-  }
+  bool operator ==(Object other) =>
+      other is Avatar && svgUri.toString() == other.svgUri.toString();
 
   @override
-  int get hashCode {
-    return svgUri.toString().hashCode;
-  }
+  int get hashCode => svgUri.toString().hashCode;
 }
 
 ///
