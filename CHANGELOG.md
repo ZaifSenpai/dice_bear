@@ -1,3 +1,8 @@
+## 0.1.7
+* Updated dependencies
+* Added linux files for flutter example
+* Code refactor
+
 ## 0.1.6
 * Updated http version to 1.0.0
 
