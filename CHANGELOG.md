@@ -1,3 +1,7 @@
+## 1.0.0
+* Updated to use latest dice bear API 9.x
+* Contains breaking changes
+
 ## 0.1.7
 * Updated dependencies
 * Added linux files for flutter example
