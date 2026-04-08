@@ -28,9 +28,9 @@ class _DiceBearPlaygroundPageState extends State<DiceBearPlaygroundPage> {
   final TextEditingController _pixelClothingColorController =
       TextEditingController(text: 'fbf5e6');
 
-  final List<DiceBearStyle> _styles = DiceBearStyle.values
-      .where((style) => style != DiceBearStyle.thumb)
-      .toList(growable: false);
+  final List<DiceBearStyle> _styles = DiceBearStyle.values.toList(
+    growable: false,
+  );
 
   final Random _random = Random();
 
