@@ -556,7 +556,7 @@ class DiceBearBuilder {
   final DiceBearStyle sprite;
   final String seed;
   /// Background colors
-  final List<Color>? backgroundColor;
+  final Color? backgroundColor;
   final int radius;
   final int? size;
   final int scale;
