@@ -48,11 +48,22 @@ final RegExp _hexColorWithoutHash = RegExp(r'^[a-fA-F0-9]{6}$');
 
 /// Supported output formats for DiceBear HTTP API v9.
 enum DiceBearFormat {
+  /// Image format svg
   svg,
+
+  /// Image format png
   png,
+
+  /// Image format jpeg
   jpg,
+
+  /// Image format webp
   webp,
+
+  /// Image format avif
   avif,
+
+  /// Image format json
   json,
 }
 
@@ -81,39 +92,98 @@ extension _DiceBearFormatX on DiceBearFormat {
 enum DiceBearStyle {
   /// Random style, resolved client-side before URL generation.
   random,
+
+  /// DiceBear Style [Adventurer](https://www.dicebear.com/styles/adventurer)
   adventurer,
+
+  /// DiceBear Style [Adventurer Neutral](https://www.dicebear.com/styles/adventurerNeutral)
   adventurerNeutral,
+
+  /// DiceBear Style [Avataaars](https://www.dicebear.com/styles/avataaars)
   avataaars,
+
+  /// DiceBear Style [Avataaars Neutral](https://www.dicebear.com/styles/avataaarsNeutral)
   avataaarsNeutral,
+
+  /// DiceBear Style [Big Ears](https://www.dicebear.com/styles/bigEars)
   bigEars,
+
+  /// DiceBear Style [Big Ears Neutral](https://www.dicebear.com/styles/bigEarsNeutral)
   bigEarsNeutral,
+
+  /// DiceBear Style [Big Smile](https://www.dicebear.com/styles/bigSmile)
   bigSmile,
+
+  /// DiceBear Style [Bottts](https://www.dicebear.com/styles/bottts)
   bottts,
+
+  /// DiceBear Style [Bottts Neutral](https://www.dicebear.com/styles/botttsNeutral)
   botttsNeutral,
+
+  /// DiceBear Style [Croodles](https://www.dicebear.com/styles/croodles)
   croodles,
+
+  /// DiceBear Style [Croodles Neutral](https://www.dicebear.com/styles/croodlesNeutral)
   croodlesNeutral,
+
+  /// DiceBear Style [Dylan](https://www.dicebear.com/styles/dylan)
   dylan,
+
+  /// DiceBear Style [Fun Emoji](https://www.dicebear.com/styles/funEmoji)
   funEmoji,
+
+  /// DiceBear Style [Glass](https://www.dicebear.com/styles/glass)
   glass,
+
+  /// DiceBear Style [Icons](https://www.dicebear.com/styles/icons)
   icons,
+
+  /// DiceBear Style [Identicon](https://www.dicebear.com/styles/identicon)
   identicon,
+
+  /// DiceBear Style [Initials](https://www.dicebear.com/styles/initials)
   initials,
+
+  /// DiceBear Style [Lorelei](https://www.dicebear.com/styles/lorelei)
   lorelei,
+
+  /// DiceBear Style [Lorelei Neutral](https://www.dicebear.com/styles/loreleiNeutral)
   loreleiNeutral,
+
+  /// DiceBear Style [Micah](https://www.dicebear.com/styles/micah)
   micah,
+
+  /// DiceBear Style [Miniavs](https://www.dicebear.com/styles/miniavs)
   miniavs,
+
+  /// DiceBear Style [Notionists](https://www.dicebear.com/styles/notionists)
   notionists,
+
+  /// DiceBear Style [Notionists Neutral](https://www.dicebear.com/styles/notionistsNeutral)
   notionistsNeutral,
+
+  /// DiceBear Style [Open Peeps](https://www.dicebear.com/styles/openPeeps)
   openPeeps,
+
+  /// DiceBear Style [Personas](https://www.dicebear.com/styles/personas)
   personas,
+
+  /// DiceBear Style [Pixel Art](https://www.dicebear.com/styles/pixelArt)
   pixelArt,
+
+  /// DiceBear Style [Pixel Art Neutral](https://www.dicebear.com/styles/pixelArtNeutral)
   pixelArtNeutral,
+
+  /// DiceBear Style [Rings](https://www.dicebear.com/styles/rings)
   rings,
+
+  /// DiceBear Style [Shapes](https://www.dicebear.com/styles/shapes)
   shapes,
+
+  /// DiceBear Style [Thumbs](https://www.dicebear.com/styles/thumbs)
   thumbs,
 
-  /// Backward-compatible alias for [thumbs].
-  thumb,
+  /// DiceBear Style [Toon Head](https://www.dicebear.com/styles/toonHead)
   toonHead,
 }
 
@@ -179,7 +249,6 @@ extension _DiceBearStyleX on DiceBearStyle {
       case DiceBearStyle.shapes:
         return 'shapes';
       case DiceBearStyle.thumbs:
-      case DiceBearStyle.thumb:
         return 'thumbs';
       case DiceBearStyle.toonHead:
         return 'toon-head';
@@ -198,8 +267,12 @@ extension _ColorX on Color {
   }
 }
 
+/// Background types for DiceBear image. Possible values: `solid` (Default) and `gradientLinear`
 enum DiceBearBackgroundType {
+  /// Set background to a solid color. Provide `backgroundColor` option to customize.
   solid,
+
+  /// Background type gradient. Provide `backgroundColor` option to customize gradient.
   gradientLinear,
 }
 
@@ -216,6 +289,7 @@ extension _DiceBearBackgroundTypeX on DiceBearBackgroundType {
 
 /// Shared base for style-specific options.
 abstract class DiceBearStyleOptions {
+  /// Convert all options to URL query parameters
   Map<String, String> toQueryParameters();
 }
 
@@ -233,7 +307,9 @@ class DiceBearRawStyleOptions implements DiceBearStyleOptions {
       }
 
       if (value is List) {
-        _validateStringArray(name: key, values: value.whereType<String>().toList(growable: false));
+        _validateStringArray(
+            name: key,
+            values: value.whereType<String>().toList(growable: false));
       }
     });
 
@@ -249,6 +325,8 @@ class DiceBearCoreOptions {
   final int? scale;
   final int? radius;
   final int? size;
+
+  /// Background colors (hex without #, or "transparent")
   final List<String>? backgroundColor;
   final List<DiceBearBackgroundType>? backgroundType;
   final List<int>? backgroundRotation;
@@ -291,7 +369,8 @@ class DiceBearCoreOptions {
       }
 
       for (final value in backgroundRotation!) {
-        _checkRange(name: 'backgroundRotation', value: value, min: -360, max: 360);
+        _checkRange(
+            name: 'backgroundRotation', value: value, min: -360, max: 360);
       }
     }
 
@@ -321,7 +400,8 @@ class DiceBearCoreOptions {
       'radius': radius,
       'size': size,
       'backgroundColor': backgroundColor,
-      'backgroundType': backgroundType?.map((e) => e.value).toList(growable: false),
+      'backgroundType':
+          backgroundType?.map((e) => e.value).toList(growable: false),
       'backgroundRotation': backgroundRotation,
       'translateX': translateX,
       'translateY': translateY,
@@ -358,7 +438,8 @@ class DiceBearRequest<T extends DiceBearStyleOptions> {
 
   /// Fully generated URI for the request.
   Uri get uri {
-    final resolvedStyle = style.isRandom ? DiceBearStyleRandom.randomStyle() : style;
+    final resolvedStyle =
+        style.isRandom ? DiceBearStyleRandom.randomStyle() : style;
     final query = queryParameters;
 
     return Uri.https(
@@ -371,7 +452,8 @@ class DiceBearRequest<T extends DiceBearStyleOptions> {
   /// Fetches bytes for image formats. For [DiceBearFormat.json], use [fetchJson].
   Future<Uint8List> fetchBytes({http.Client? client}) async {
     if (format == DiceBearFormat.json) {
-      throw StateError('Cannot fetch image bytes for json format. Use fetchJson().');
+      throw StateError(
+          'Cannot fetch image bytes for json format. Use fetchJson().');
     }
 
     final localClient = client ?? http.Client();
@@ -380,7 +462,8 @@ class DiceBearRequest<T extends DiceBearStyleOptions> {
     try {
       final response = await localClient.get(uri);
       if (response.statusCode != 200) {
-        throw Exception('DiceBear request failed: ${response.statusCode} ${response.body}');
+        throw Exception(
+            'DiceBear request failed: ${response.statusCode} ${response.body}');
       }
       return response.bodyBytes;
     } finally {
@@ -402,12 +485,14 @@ class DiceBearRequest<T extends DiceBearStyleOptions> {
     try {
       final response = await localClient.get(uri);
       if (response.statusCode != 200) {
-        throw Exception('DiceBear request failed: ${response.statusCode} ${response.body}');
+        throw Exception(
+            'DiceBear request failed: ${response.statusCode} ${response.body}');
       }
 
       final decoded = jsonDecode(response.body);
       if (decoded is! Map<String, dynamic>) {
-        throw FormatException('Expected JSON object response, got ${decoded.runtimeType}.');
+        throw FormatException(
+            'Expected JSON object response, got ${decoded.runtimeType}.');
       }
       return decoded;
     } finally {
@@ -470,7 +555,8 @@ class DiceBearRequest<T extends DiceBearStyleOptions> {
 class DiceBearBuilder {
   final DiceBearStyle sprite;
   final String seed;
-  final Color? backgroundColor;
+  /// Background colors
+  final List<Color>? backgroundColor;
   final int radius;
   final int? size;
   final int scale;
@@ -510,8 +596,9 @@ class DiceBearBuilder {
       format: DiceBearFormat.svg,
       coreOptions: DiceBearCoreOptions(
         seed: seed,
-        backgroundColor:
-            backgroundColor == null ? null : DiceBearCoreOptions.fromColor(backgroundColor!),
+        backgroundColor: backgroundColor == null
+            ? null
+            : DiceBearCoreOptions.fromColor(backgroundColor!),
         radius: radius,
         size: size,
         scale: scale,
@@ -540,9 +627,11 @@ class Avatar {
         return response.bodyBytes;
       }
 
-      throw Exception('response code is ${response.statusCode} with message ${response.body}');
+      throw Exception(
+          'response code is ${response.statusCode} with message ${response.body}');
     } catch (e, stackTrace) {
-      debugPrintStack(stackTrace: stackTrace, label: 'Error occurred in rawSvg()');
+      debugPrintStack(
+          stackTrace: stackTrace, label: 'Error occurred in rawSvg()');
       return null;
     }
   }
@@ -591,7 +680,7 @@ extension DiceBearStyleRandom on DiceBearStyle {
 
   static DiceBearStyle randomStyle() {
     final options = DiceBearStyle.values
-        .where((style) => style != DiceBearStyle.random && style != DiceBearStyle.thumb)
+        .where((style) => style != DiceBearStyle.random)
         .toList(growable: false);
     return options[_random.nextInt(options.length)];
   }
@@ -796,6 +885,7 @@ String _randomString({int length = 200}) {
       'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
   final random = Random();
   return String.fromCharCodes(
-    Iterable.generate(length, (_) => chars.codeUnitAt(random.nextInt(chars.length))),
+    Iterable.generate(
+        length, (_) => chars.codeUnitAt(random.nextInt(chars.length))),
   );
 }
