@@ -1,3 +1,6 @@
+## 1.0.1
+* Updated README.md
+
 ## 1.0.0
 * Updated to use latest dice bear API 9.x
 * Contains breaking changes
