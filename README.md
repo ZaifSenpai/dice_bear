@@ -40,27 +40,34 @@ Then run `flutter pub get`.
 ```dart
 import 'package:dice_bear/dice_bear.dart';
 
-// Create a simple avatar
-final avatar = DiceBearBuilder(
-  seed: 'john_doe',  // Deterministic: same seed = same avatar
-  sprite: DiceBearSprite.adventurer,
-).build();
+// Create a simple avatar request
+final request = DiceBearRequest(
+  style: DiceBearStyle.adventurer,
+  coreOptions: DiceBearCoreOptions(
+    seed: 'john_doe', // Deterministic: same seed = same avatar
+  ),
+);
 
 // Render as Flutter widget
-Widget widget = avatar.toImage(width: 200, height: 200);
+Widget widget = request.toImage(width: 200, height: 200);
 
 // Get the SVG URL
-Uri svgUrl = avatar.svgUri;
+Uri svgUrl = request.uri;
 
 // Get raw SVG bytes
-Uint8List? svgBytes = await avatar.asRawSvgBytes();
+Uint8List? svgBytes = await request.fetchBytes();
 ```
 
 ### Random Avatar
 
 ```dart
 // Generate a new random avatar each time
-final avatar = DiceBearBuilder.withRandomSeed().build();
+final request = DiceBearRequest(
+  style: DiceBearStyle.random,
+  coreOptions: DiceBearCoreOptions(
+    seed: DateTime.now().millisecondsSinceEpoch.toString(),
+  ),
+);
 ```
 
 ## Advanced Usage
@@ -71,31 +78,35 @@ Each DiceBear style has its own options class for fine-grained control:
 
 ```dart
 // Adventurer style with custom eye and mouth options
-final avatar = DiceBearBuilder(
-  seed: 'user123',
-  sprite: DiceBearSprite.adventurer,
+final request = DiceBearRequest<DiceBearAdventurerOptions>(
+  style: DiceBearStyle.adventurer,
+  coreOptions: DiceBearCoreOptions(
+    seed: 'user123',
+  ),
   styleOptions: DiceBearAdventurerOptions(
     eyes: ['variant01', 'variant05'],
     mouth: ['variant10'],
     glasses: ['variant02'],
     glassesProbability: 50,  // 50% chance of glasses
   ),
-).build();
+);
 ```
 
 ### PixelArt with Customization
 
 ```dart
-final avatar = DiceBearBuilder(
-  seed: 'pixel_user',
-  sprite: DiceBearSprite.pixelArt,
+final request = DiceBearRequest<DiceBearPixelArtOptions>(
+  style: DiceBearStyle.pixelArt,
+  coreOptions: DiceBearCoreOptions(
+    seed: 'pixel_user',
+  ),
   styleOptions: DiceBearPixelArtOptions(
     accessories: ['variant01', 'variant02'],
     beard: ['variant03'],
     clothingColor: ['ff5733', 'fbf5e6'],
     eyesColor: ['647b90'],
   ),
-).build();
+);
 ```
 
 ### Common Customization Parameters
@@ -144,7 +155,7 @@ final avatar = DiceBearBuilder(
 When calling `.toImage()`, you can pass additional Flutter parameters:
 
 ```dart
-widget = avatar.toImage(
+widget = request.toImage(
   width: 200,
   height: 200,
   fit: BoxFit.contain,
@@ -215,13 +226,15 @@ class UserAvatar extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    final avatar = DiceBearBuilder(
-      seed: userId,
-      sprite: DiceBearSprite.avataaars,
-      backgroundColor: Colors.blue.shade100,
-    ).build();
+    final request = DiceBearRequest(
+      style: DiceBearStyle.avataaars,
+      coreOptions: DiceBearCoreOptions(
+        seed: userId,
+        backgroundColor: DiceBearCoreOptions.fromColor(Colors.blue.shade100!),
+      ),
+    );
     
-    return avatar.toImage(width: size, height: size);
+    return request.toImage(width: size, height: size);
   }
 }
 ```
@@ -232,8 +245,13 @@ class UserAvatar extends StatelessWidget {
 ListView.builder(
   itemCount: 10,
   itemBuilder: (context, index) {
-    final avatar = DiceBearBuilder.withRandomSeed().build();
-    return avatar.toImage(width: 100, height: 100);
+    final request = DiceBearRequest(
+      style: DiceBearStyle.random,
+      coreOptions: DiceBearCoreOptions(
+        seed: index.toString(),
+      ),
+    );
+    return request.toImage(width: 100, height: 100);
   },
 )
 ```
