@@ -237,7 +237,6 @@ void main() {
         DiceBearStyle.rings: '/9.x/rings/svg',
         DiceBearStyle.shapes: '/9.x/shapes/svg',
         DiceBearStyle.thumbs: '/9.x/thumbs/svg',
-        DiceBearStyle.thumb: '/9.x/thumbs/svg',
         DiceBearStyle.toonHead: '/9.x/toon-head/svg',
       };
 
@@ -259,15 +258,6 @@ void main() {
       );
 
       expect(request.uri.path, '/9.x/toon-head/json');
-    });
-
-    test('legacy thumb alias maps to thumbs style', () {
-      final request = DiceBearRequest<DiceBearRawStyleOptions>(
-        style: DiceBearStyle.thumb,
-        coreOptions: const DiceBearCoreOptions(seed: 'thumb-seed'),
-      );
-
-      expect(request.uri.path, '/9.x/thumbs/svg');
     });
 
     test('query parameters are deterministic and sorted by key', () {
