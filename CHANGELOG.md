@@ -1,3 +1,6 @@
+## 1.0.2
+* Reduces the generated random seed length from 200 to 16 characters
+
 ## 1.0.1
 * Updated README.md
 
