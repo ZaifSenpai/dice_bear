@@ -360,17 +360,17 @@ class DiceBearCoreOptions {
     _checkRange(name: 'translateY', value: translateY, min: -100, max: 100);
 
     if (backgroundRotation != null) {
-      if (backgroundRotation!.length != 2) {
+      if (backgroundRotation!.length < 1 || backgroundRotation!.length > 2) {
         throw ArgumentError.value(
           backgroundRotation,
           'backgroundRotation',
-          'must contain exactly 2 values [min, max]',
+          'must contain 1 or 2 values [min, max] or [value]',
         );
       }
 
       for (final value in backgroundRotation!) {
         _checkRange(
-            name: 'backgroundRotation', value: value, min: -360, max: 360);
+            name: 'backgroundRotation', value: value, min: 0, max: 360);
       }
     }
 
