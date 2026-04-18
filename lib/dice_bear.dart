@@ -370,7 +370,7 @@ class DiceBearCoreOptions {
 
       for (final value in backgroundRotation!) {
         _checkRange(
-            name: 'backgroundRotation', value: value, min: 0, max: 360);
+            name: 'backgroundRotation', value: value, min: -360, max: 360);
       }
     }
 
