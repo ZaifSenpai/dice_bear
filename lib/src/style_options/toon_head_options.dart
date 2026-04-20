@@ -105,22 +105,6 @@ class DiceBearToonHeadOptions extends DiceBearCharacterStyleOptions {
     );
     _validateHexArray(
         name: 'clothesColor', values: clothesColor, allowTransparent: true);
-    _validateAllowedValues(
-      name: 'clothesColor',
-      values: clothesColor,
-      allowed: const {
-        '0b3286',
-        '147f3c',
-        '731ac3',
-        '151613',
-        '545454',
-        'b11f1f',
-        'e8e9e6',
-        'eab308',
-        'ec4899',
-        'f97316'
-      },
-    );
     _validateStringArray(name: 'eyebrows', values: eyebrows);
     _validateAllowedValues(
       name: 'eyebrows',
@@ -142,11 +126,6 @@ class DiceBearToonHeadOptions extends DiceBearCharacterStyleOptions {
     );
     _validateHexArray(
         name: 'hairColor', values: hairColor, allowTransparent: true);
-    _validateAllowedValues(
-      name: 'hairColor',
-      values: hairColor,
-      allowed: const {'2c1b18', '724133', 'a55728', 'b58143', 'd6b370'},
-    );
     _checkProbability(name: 'hairProbability', value: hairProbability);
     _validateStringArray(name: 'head', values: head);
     _validateAllowedValues(name: 'head', values: head, allowed: const {'head'});
@@ -165,11 +144,6 @@ class DiceBearToonHeadOptions extends DiceBearCharacterStyleOptions {
     _checkProbability(name: 'rearHairProbability', value: rearHairProbability);
     _validateHexArray(
         name: 'skinColor', values: skinColor, allowTransparent: true);
-    _validateAllowedValues(
-      name: 'skinColor',
-      values: skinColor,
-      allowed: const {'5c3829', 'a36b4f', 'b98e6a', 'c68e7a', 'f1c3a5'},
-    );
 
     return _serializeMap({
       'seed': seed,
