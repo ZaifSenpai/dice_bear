@@ -1,3 +1,6 @@
+## 1.0.4
+* Fixed missing options in `DiceBearToonHeadOptions`
+
 ## 1.0.3
 * Fixed `backgroundRotation` validation
 
